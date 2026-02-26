@@ -76,7 +76,25 @@
 
     .hero-content {
       text-align: center;
-      max-width: 700px;
+      max-width: 900px;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .hero-text {
+      text-align: left;
+      flex: 1;
+    }
+
+    .hero-avatar {
+      width: 280px;
+      height: 340px;
+      object-fit: cover;
+      border-radius: 20px;
+      border: 4px solid var(--accent);
+      flex-shrink: 0;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
     }
 
     .hero-eyebrow {
@@ -416,15 +434,12 @@
   <!-- HERO -->
   <div class="hero">
     <div class="hero-content">
-      <span class="hero-eyebrow">Data Analyst Portfolio</span>
-      <h1>Hi, I'm <span class="gold">Praisy Onyx S</span></h1>
-      <p>I help teams stay on track through clean data, clear reports, and structured documentation. Based in Tirunelveli, India.</p>
-      <div class="hero-cta">
-        <a href="#projects" class="btn btn-primary">View My Work</a>
-        <a href="mailto:praisyonyx@gmail.com" class="btn btn-ghost">Get in Touch</a>
-      </div>
-    </div>
+    <img src="avatar.png" alt="Praisy Onyx S" class="hero-avatar"/>
+    <div class="hero-text">
+    <span class="hero-eyebrow">Data Analyst Portfolio</span>
   </div>
+  </div>
+    </div>
 
   <!-- ABOUT -->
   <div id="about" class="section">
@@ -488,7 +503,7 @@
               <span class="pill">Bar Chart</span>
             </div>
             <div class="project-buttons">
-  <a href="Book_Delivery_Dashboard.xlsx" class="project-link" download>⬇ Download</a>
+  <a href="https://docs.google.com/spreadsheets/d/1SPr5HzO1pcTjwCfvvlD-JIe1psk3wa8h/export?format=xlsx" class="project-link">⬇ Download</a>
   <a href="https://docs.google.com/spreadsheets/d/1SPr5HzO1pcTjwCfvvlD-JIe1psk3wa8h/view" class="project-link-view" target="_blank">👁 View</a>
 </div>
           </div>
@@ -506,7 +521,7 @@
               <span class="pill">Business Writing</span>
             </div>
            <div class="project-buttons">
-  <a href="Twilio_vs_WhatsApp_Comparison.docx" class="project-link" download>⬇ Download</a>
+  <a href="https://docs.google.com/document/d/1BuKDFCzLrLLUzI_A2smGEmHPZLWD15KJ/export?format=docx" class="project-link">⬇ Download</a>
   <a href="https://docs.google.com/document/d/1BuKDFCzLrLLUzI_A2smGEmHPZLWD15KJ/view" class="project-link-view" target="_blank">👁 View</a>
 </div>
           </div>
