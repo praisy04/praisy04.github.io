@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Praisy Onyx S — Data Analyst</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1F3864;
+      --accent: #C8A96E;
+      --bg: #F7F9FC;
+      --card: #FFFFFF;
+      --text: #1a1a2e;
+      --muted: #6b7280;
+      --border: #e5eaf3;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.95);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      z-index: 100;
+    }
+
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: var(--navy);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1F3864 0%, #2E5BA8 100%);
+      padding: 100px 2rem 2rem;
+    }
+
+    .hero-content {
+      text-align: center;
+      max-width: 700px;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      padding: 6px 18px;
+      border-radius: 20px;
+      margin-bottom: 1.4rem;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .gold { color: var(--accent); }
+
+    .hero p {
+      color: rgba(255,255,255,0.75);
+      font-size: 1.05rem;
+      max-width: 520px;
+      margin: 0 auto 2rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 12px 28px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,0.4);
+      color: #fff;
+    }
+
+    /* SECTIONS */
+    .section {
+      padding: 80px 2rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: var(--accent);
+      margin-bottom: 2.5rem;
+      border-radius: 2px;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-size: 0.97rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.2rem;
+    }
+
+    .tag {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--navy);
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 5px 14px;
+      border-radius: 20px;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.4rem;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(31,56,100,0.06);
+    }
+
+    .stat-card .num {
+      font-family: 'Courier New', monospace;
+      font-size: 2.2rem;
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .stat-card .lbl {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* PROJECTS */
+    .projects-bg {
+      background: white;
+      padding: 80px 2rem;
+    }
+
+    .projects-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(31,56,100,0.07);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 32px rgba(31,56,100,0.13);
+    }
+
+    .project-thumb {
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+    }
+
+    .project-thumb.excel {
+      background: linear-gradient(135deg, #1F3864, #2E5BA8);
+    }
+
+    .project-thumb.doc {
+      background: linear-gradient(135deg, #1a6b3c, #2a9d5c);
+    }
+
+    .project-body {
+      padding: 1.4rem 1.6rem 1.8rem;
+    }
+
+    .project-type {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .project-body h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+    }
+
+    .project-body p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+      line-height: 1.6;
+    }
+
+    .project-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .pill {
+      background: #EEF4FB;
+      color: var(--navy);
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 12px;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--navy);
+      text-decoration: none;
+    }
+
+    .project-link:hover {
+      gap: 10px;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+
+    .skill-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.4rem;
+      box-shadow: 0 2px 10px rgba(31,56,100,0.05);
+    }
+
+    .skill-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .skill-card h4 {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-card p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 680px) {
+      .about-grid, .projects-grid, .skills-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.2rem; }
+    }
+    .project-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .project-link-view {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .project-link-view:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <span class="nav-brand">Praisy Onyx S</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="mailto:praisyonyx@gmail.com">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-content">
+      <span class="hero-eyebrow">Data Analyst Portfolio</span>
+      <h1>Hi, I'm <span class="gold">Praisy Onyx S</span></h1>
+      <p>I help teams stay on track through clean data, clear reports, and structured documentation. Based in Tirunelveli, India.</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="mailto:praisyonyx@gmail.com" class="btn btn-ghost">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div id="about" class="section">
+    <p class="section-label">Background</p>
+    <h2>About Me</h2>
+    <div class="divider"></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a junior data analyst with hands-on experience in data validation, Excel reporting, tracker maintenance, and process documentation.</p>
+        <p>I currently work at Ascending Software where I support functional testing and workflow documentation across cross-functional teams.</p>
+        <p>My background in Applied Electronics (M.E., CGPA 8.89) gives me a structured, analytical approach to problem-solving.</p>
+        <div class="tags">
+          <span class="tag">Excel</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Data Validation</span>
+          <span class="tag">Process Documentation</span>
+          <span class="tag">Smartsheet</span>
+          <span class="tag">MS Teams</span>
+          <span class="tag">PowerPoint</span>
+        </div>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="num">8.89</div>
+          <div class="lbl">M.E. CGPA</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">2</div>
+          <div class="lbl">Certifications</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">2</div>
+          <div class="lbl">Industry Roles</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">3</div>
+          <div class="lbl">Regions in Projects</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div id="projects" class="projects-bg">
+    <div class="projects-inner">
+      <p class="section-label">Work Samples</p>
+      <h2>Projects</h2>
+      <div class="divider"></div>
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <div class="project-thumb excel">📊</div>
+          <div class="project-body">
+            <p class="project-type">Excel · Dashboard</p>
+            <h3>Book Delivery Tracker</h3>
+            <p>An Excel dashboard tracking plan vs actual delivery dates for 12 book titles across APAC, EMEA, and Americas — with KPI cards, regional summary, and conditional formatting for Early / On-Time / Delayed status.</p>
+            <div class="project-pills">
+              <span class="pill">Pivot Tables</span>
+              <span class="pill">COUNTIFS</span>
+              <span class="pill">Conditional Formatting</span>
+              <span class="pill">Bar Chart</span>
+            </div>
+            <div class="project-buttons">
+  <a href="Book_Delivery_Dashboard.xlsx" class="project-link" download>⬇ Download</a>
+  <a href="https://docs.google.com/spreadsheets/d/1SPr5HzO1pcTjwCfvvlD-JIe1psk3wa8h/view" class="project-link-view" target="_blank">👁 View</a>
+</div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb doc">📄</div>
+          <div class="project-body">
+            <p class="project-type">Documentation · Platform Comparison</p>
+            <h3>Twilio vs WhatsApp Business API</h3>
+            <p>A structured comparison document evaluating Twilio and WhatsApp Business API across features, pricing, integration, and recommended use cases — to support platform selection decisions.</p>
+            <div class="project-pills">
+              <span class="pill">Requirements Analysis</span>
+              <span class="pill">Comparison Tables</span>
+              <span class="pill">Business Writing</span>
+            </div>
+           <div class="project-buttons">
+  <a href="Twilio_vs_WhatsApp_Comparison.docx" class="project-link" download>⬇ Download</a>
+  <a href="https://docs.google.com/document/d/1BuKDFCzLrLLUzI_A2smGEmHPZLWD15KJ/view" class="project-link-view" target="_blank">👁 View</a>
+</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div id="skills" class="section">
+    <p class="section-label">What I Work With</p>
+    <h2>Skills</h2>
+    <div class="divider"></div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">📊</div>
+        <h4>Excel</h4>
+        <p>Pivot Tables, VLOOKUP/XLOOKUP, charts, conditional formatting, data validation and cleanup.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🗄️</div>
+        <h4>SQL</h4>
+        <p>Basic queries — SELECT, JOIN, GROUP BY, and aggregate functions for data retrieval and summarization.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">✅</div>
+        <h4>Data Validation & QA</h4>
+        <p>Sample checks, consistency reviews, deduplication, and issue log maintenance.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📝</div>
+        <h4>Documentation</h4>
+        <p>BRD/FRD preparation, process guides, change logs, naming conventions, and meeting notes.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🤝</div>
+        <h4>Collaboration Tools</h4>
+        <p>Microsoft 365 — Outlook, Teams, OneDrive, PowerPoint. Smartsheet (familiar).</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📦</div>
+        <h4>Tracker Management</h4>
+        <p>Maintaining delivery trackers, status updates, and SLA monitoring across teams.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Praisy Onyx S &nbsp;·&nbsp; Tirunelveli, Tamil Nadu &nbsp;·&nbsp; <a href="mailto:praisyonyx@gmail.com">praisyonyx@gmail.com</a></p>
+    <p style="margin-top:0.5rem; font-size:0.78rem;">Data Analyst Portfolio · 2025</p>
+  </footer>
+
+</body>
+</html>
