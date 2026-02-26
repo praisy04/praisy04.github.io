@@ -411,8 +411,59 @@
 
     @media (max-width: 680px) {
       .about-grid, .projects-grid, .skills-grid { grid-template-columns: 1fr; }
+      
+      .hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+      }
+
+      .hero-text {
+        text-align: center;
+      }
+
+      .hero-avatar {
+        width: 200px;
+        height: 240px;
+        order: -1;
+      }
+
       .hero h1 { font-size: 2.2rem; }
+
+      .hero-cta {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .hero p {
+        margin: 0 auto 1.5rem;
+      }
+
+      nav {
+        padding: 0 1rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+      }
+
+      .nav-links a {
+        font-size: 0.78rem;
+      }
+
+      .section {
+        padding: 50px 1.2rem;
+      }
+
+      .projects-bg {
+        padding: 50px 1.2rem;
+      }
+
+      h2 {
+        font-size: 1.7rem;
+      }
     }
+    
     .project-buttons {
       display: flex;
       gap: 1rem;
