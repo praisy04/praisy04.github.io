@@ -72,6 +72,16 @@
       justify-content: center;
       background: linear-gradient(135deg, #1F3864 0%, #2E5BA8 100%);
       padding: 100px 2rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
+      background-size: 40px 40px;
     }
 
 .hero-content {
@@ -439,7 +449,6 @@
   <div class="hero">
     <div class="hero-content">
       <div class="hero-text">
-        <span class="hero-eyebrow">Data Analyst Portfolio</span>
         <h1>Hi, I'm <span class="gold">Praisy Onyx S</span></h1>
         <p>I help teams stay on track through clean data, clear reports, and structured documentation. Based in Tirunelveli, India.</p>
         <div class="hero-cta">
